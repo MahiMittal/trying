@@ -1,33 +1,9 @@
-from pptx.dml.color import RGBColor
-from pptx.util import Pt
-from pptx.enum.text import PP_ALIGN
-
-def set_text_properties(text_frame, font_name=None, font_size=None, font_color=None, fill_color=None, border_color=None, alignment=None):
-    for paragraph in text_frame.paragraphs:
-        if font_name is not None:
-            paragraph.font.name = font_name
-        if font_size is not None:
-            paragraph.font.size = Pt(font_size)
-        if font_color is not None:
-            paragraph.font.color.rgb = font_color
-        if alignment is not None:
-            paragraph.alignment = alignment
-
-    if fill_color is not None:
-        text_frame.parent.fill.solid()
-        text_frame.parent.fill.fore_color.rgb = fill_color
-
-    if border_color is not None:
-        text_frame.parent.line.color.rgb = border_color
-
-# Usage example:
-# Assuming text_box is your textbox object
-set_text_properties(
-    text_box.text_frame, 
-    font_name='Arial', 
-    font_size=12, 
-    font_color=RGBColor(255, 0, 0), 
-    fill_color=RGBColor(0, 255, 0),
-    border_color=RGBColor(0, 0, 255),
-    alignment=PP_ALIGN.CENTER  # Set your desired alignment here
-)
+def set_properties(shape, font_name='Calibri', font_size=Pt(18), font_color=RGBColor(0, 0, 0), fill_color=RGBColor(255, 255, 255), border_color=RGBColor(0, 0, 0), alignment=PP_ALIGN.LEFT):
+    shape.fill.solid()
+    shape.fill.fore_color.rgb = fill_color
+    shape.line.color.rgb = border_color
+    for paragraph in shape.text_frame.paragraphs:
+        paragraph.alignment = alignment
+        paragraph.font.name = font_name
+        paragraph.font.size = font_size
+        paragraph.font.color.rgb = font_color
