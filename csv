@@ -1,0 +1,10 @@
+# Read the CSV file into a DataFrame
+df = pd.read_csv('your_file.csv')
+
+# Create a presentation object
+prs = Presentation()
+
+# Loop over the DataFrame rows
+for i in range(df.shape[0]):
+    # Loop over the DataFrame columns
+    for j in range(df.shape[1]):
