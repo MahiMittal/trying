@@ -1,0 +1,26 @@
+from pptx.dml.color import RGBColor
+from pptx.util import Pt
+
+def set_text_properties(text_frame, font_name=None, font_size=None, font_color=None, fill_color=None, border_color=None):
+    if font_name is not None:
+        text_frame.paragraphs[0].font.name = font_name
+    if font_size is not None:
+        text_frame.paragraphs[0].font.size = Pt(font_size)
+    if font_color is not None:
+        text_frame.paragraphs[0].font.color.rgb = font_color
+    if fill_color is not None:
+        text_frame.parent.fill.solid()
+        text_frame.parent.fill.fore_color.rgb = fill_color
+    if border_color is not None:
+        text_frame.parent.line.color.rgb = border_color
+
+# Usage example:
+# Assuming text_box is your textbox object
+set_text_properties(
+    text_box.text_frame, 
+    font_name='Arial', 
+    font_size=12, 
+    font_color=RGBColor(255, 0, 0), 
+    fill_color=RGBColor(0, 255, 0),
+    border_color=RGBColor(0, 0, 255)
+)
