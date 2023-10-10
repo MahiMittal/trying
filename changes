@@ -1,0 +1,9 @@
+from pptx.util import Pt
+
+def set_font_properties(text_frame, font_name, font_size):
+    for paragraph in text_frame.paragraphs:
+        paragraph.font.name = font_name
+        paragraph.font.size = Pt(font_size)
+
+# Usage example:
+set_font_properties(text_box.text_frame, 'Arial', 12)
