@@ -7,3 +7,14 @@ def set_properties(shape, font_name='Calibri', font_size=Pt(18), font_color=RGBC
         paragraph.font.name = font_name
         paragraph.font.size = font_size
         paragraph.font.color.rgb = font_color
+
+def set_font(run, name='Calibri', size=Pt(18), bold=True, italic=True):
+    font = run.font
+    font.name = name
+    font.size = size
+    font.bold = bold
+    font.italic = italic
+
+# Usage:
+run = paragraph.add_run()
+set_font(run, 'Arial', Pt(24), False, True)
